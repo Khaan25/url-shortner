@@ -1,9 +1,12 @@
 import { getOriginalUrl } from '@/utils/db'
 
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
-export async function GET(request: NextRequest, { params }: { params: { shortCode: string } }) {
-  const { shortCode } = await params
+type Params = Promise<{ shortCode: string }>
+
+export async function GET(request: Request, segmentData: { params: Params }) {
+  const params = await segmentData.params
+  const shortCode = params.shortCode
 
   const originalUrl = await getOriginalUrl(shortCode)
 
