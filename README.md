@@ -18,7 +18,7 @@ This project showcases a URL shortener service built with Next.js 15, leveraging
    ```
 
 2. Configure environment variables:
-   Create a `.env.local` file in the project root with the following content:
+   Create a `.env` file in the project root with the following content:
    ```
    NEXT_PUBLIC_BASE_URL=http://localhost:3000
    UNKEY_API_KEY=unkey_some_token
