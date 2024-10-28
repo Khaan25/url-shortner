@@ -1,6 +1,6 @@
 # Next.js 15 URL Shortener with App Router and Shadcn UI
 
-This project showcases a URL shortener service built with Next.js 15, leveraging the new App Router and the shadcn/ui component library. Additionally, it integrates with Unkey.com for managing API keys, enforcing rate limits, and providing tiered access.
+This project showcases a URL shortener service built with Next.js 15, leveraging the new App Router and the shadcn/ui component library. Additionally, it integrates with Unkey.com for enforcing rate limits. It also provides tiered access to shortened URLs.
 
 ## Key Features
 
@@ -16,6 +16,14 @@ This project showcases a URL shortener service built with Next.js 15, leveraging
    ```
    npm install
    ```
+   or
+   ```
+   yarn install
+   ```
+   or
+   ```
+   bun install
+   ```
 
 2. Configure environment variables:
    Create a `.env` file in the project root with the following content:
@@ -28,24 +36,37 @@ This project showcases a URL shortener service built with Next.js 15, leveraging
 
 3. Set up Unkey:
    - Register at [unkey.com](https://unkey.com)
-   - Create a new API with two tiers: 'basic' and 'premium'
-   - Generate API keys for your users, assigning them to either the basic or premium tier
-   - Configure rate limiting for your API keys in the Unkey dashboard
+   - Create a new API.
+   - Add the API key to the `.env` file.
 
-4. Launch the development server:
+4. Set up Upstash:
+   - Register at [upstash.com](https://upstash.com)
+   - Create a new Redis database.
+   - Add the Redis URL and token to the `.env` file.
+
+5. Launch the development server:
    ```
    npm run dev
+   ```
+   or
+   ```
+   yarn dev
+   ```
+   or
+   ```
+   bun dev
    ```
 
 ## Using the URL Shortener
 
-- Utilize the web interface at `http://localhost:3000` to shorten URLs
-- Send POST requests to `http://localhost:3000/api/shorten` with the `Authorization` header set to a valid Unkey API key and a JSON body containing the `url` to shorten
-- Access shortened URLs via `http://localhost:3000/api/{shortCode}`
+- Head over to `http://localhost:3000` and enter the URL you want to shorten.
+- Select your tier.
+- Copy the generated short URL and share it with others.
+- Access the original URL by navigating to `http://localhost:3000/{shortCode}`.
 
 ## Tiered Access and Rate Limiting
 
 - Basic users receive 8-character short codes
 - Premium users receive 5-character short codes
 
-Rate limiting can be configured differently for each tier in the Unkey dashboard.
+Rate limiting can be configured differently for each tier in the code.
